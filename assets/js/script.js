@@ -5,6 +5,7 @@
 // Telling function to allow html and css files to run first.
 $(document).ready(function () {
   // need function to display current date and time
+  $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
   // need function for the save buttons
   // need to store and retrive data based on the time user saved
   // need function to change colors based on the time of day for past, present and future

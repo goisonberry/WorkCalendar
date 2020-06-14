@@ -25,4 +25,27 @@ $(document).ready(function () {
   $("#4pm .description").val(localStorage.getItem("4pm"));
   $("#5pm .description").val(localStorage.getItem("5pm"));
   // need function to change colors based on the time of day for past, present and future
+  function hourTracker() {
+    var currentHour = moment().hour();
+    // This section will loop in for each time block.
+    $(".time-block").each(function () {
+      var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+      console.log(blockHour, currentHour);
+      // If/else statements will change confirm to change colors of planner if time has or has not passed.
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+        $(this).removeClass("present");
+        $(this).removeClass("future");
+      } else if (blockHour === currentHour) {
+        $(this).addClass("present");
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+      } else {
+        $(this).addClass("future");
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+      }
+    });
+  }
+  hourTracker();
 });
